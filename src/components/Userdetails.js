@@ -1,6 +1,3 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import User from "./User";
 import Card from "../ui/Card";
 import classes from "./Userdetails.module.css";
 

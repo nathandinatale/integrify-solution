@@ -8,6 +8,7 @@ function User(props) {
     <li className={classes.item}>
       <Card>
         <div className={classes.content}>
+          {/* Creates an image for the user based on their name using a set of utility functions found online*/}
           <img
             className={classes.userpic}
             id="intials"

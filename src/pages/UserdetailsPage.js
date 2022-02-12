@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Userdetails from "../components/Userdetails";
 
+// The url from which the API is called uses the current URL's id paramater
 function UserdetailsPage() {
   const { id } = useParams();
 
@@ -10,6 +11,7 @@ function UserdetailsPage() {
 
   const url = "https://jsonplaceholder.typicode.com/users/" + id;
 
+  // Throws an error into the console if user can't be found
   useEffect(() => {
     fetch(url)
       .then((response) => {
@@ -26,6 +28,7 @@ function UserdetailsPage() {
         const address = {
           ...data.address,
         };
+        // Address is loaded seperately because itself is a JSON object
         setLoadedUser(user);
         setLoadedAddress(address);
       })
@@ -34,6 +37,7 @@ function UserdetailsPage() {
       });
   }, []);
 
+  // The user details page is only rendered once the user and their address have been received
   return loadedUser && loadedAddress ? (
     <div>
       <Userdetails {...loadedUser} {...loadedAddress} />

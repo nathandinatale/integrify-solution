@@ -1,3 +1,4 @@
+//Author:  Nathan Dinatale, Feb 12th, 2022
 import { useState, useEffect } from "react";
 import UserList from "../components/UserList";
 
@@ -7,7 +8,7 @@ function Homepage() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedUsers, setLoadedUsers] = useState([]);
 
-  // The use effect state is used to wait for the API to return before rendering the page
+  //  Fetching the data from the API, loading it into an array and setting loading state to false
   useEffect(() => {
     setIsLoading(true);
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -29,19 +30,17 @@ function Homepage() {
       });
   }, []);
 
-  if (isLoading) {
-    return (
-      <section>
-        <p>Loading... </p>
-      </section>
-    );
-  }
-
-  return (
+  // A change of state will cause a re-render, in which the right option here
+  // is chosen and will render the users.
+  return !isLoading ? (
     <div>
       <h1></h1>
       <UserList users={loadedUsers} />
     </div>
+  ) : (
+    <section>
+      <p>Loading... </p>
+    </section>
   );
 }
 

@@ -8,6 +8,7 @@ function App() {
       <Routes>
         {/* this is the default loaded page */}
         <Route path="/" element={<Homepage />} />
+        {/*When clicking on a user's details page, will update the URL with their ID*/}
         <Route path="/details/:id" element={<UserdetailsPage />} />
       </Routes>
     </div>
