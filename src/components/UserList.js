@@ -1,8 +1,9 @@
 import User from "./User";
+import classes from "./UserList.module.css";
 
 function UserList(props) {
   return (
-    <ul>
+    <ul className={classes.list}>
       {props.users.map((user) => (
         <User
           key={user.id}

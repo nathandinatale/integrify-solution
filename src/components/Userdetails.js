@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import User from "./User";
 import Card from "../ui/Card";
+import classes from "./Userdetails.module.css";
 
 function UserDetails(props) {
   return (
     <Card>
-      <ul>
+      <ul className={classes.details}>
         <li>name: {props.name}</li>
         <li>username: {props.username}</li>
         <li>email: {props.email}</li>
@@ -14,12 +15,12 @@ function UserDetails(props) {
         <li>website: {props.website}</li>
         <li>
           address:
-          <ol>
+          <ul>
             <li>street: {props.street}</li>
             <li>suite: {props.suite}</li>
             <li>city: {props.city}</li>
             <li>zipcode: {props.zipcode}</li>
-          </ol>
+          </ul>
         </li>
       </ul>
     </Card>

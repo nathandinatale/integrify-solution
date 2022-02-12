@@ -1,18 +1,31 @@
 import Card from "../ui/Card";
 import Button from "./Button";
+import classes from "./User.module.css";
+import { getRandomColor, createImageFromInitials } from "./Utils";
 
 function User(props) {
   return (
-    <li>
+    <li className={classes.item}>
       <Card>
-        <div>Name:{props.name}</div>
-        <div>Username:{props.username}</div>
-        <div>
-          <a href={props.website}>{props.website}</a>
+        <div className={classes.content}>
+          <img
+            className={classes.userpic}
+            id="intials"
+            src={createImageFromInitials(100, props.name, getRandomColor())}
+            alt="profile-pic"
+          />
+          <h3 className={classes.name}>{props.name}</h3>
+          <p className={classes.username}>@{props.username}</p>
+          <p className={classes.website}>
+            <a href={props.website}>{props.website}</a>
+          </p>
         </div>
         {/* Passing the ID of the user to the button so it knows where to redirect
         the user on press*/}
-        <Button id={props.id} />
+        <div className={classes.button}>
+          <Button id={props.id} />
+        </div>
+        <br></br>
       </Card>
     </li>
   );

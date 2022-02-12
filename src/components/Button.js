@@ -1,14 +1,12 @@
-import classes from "./Button.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import classes from "./Button.module.css";
 
 function Button(props) {
   return (
-    <div>
-      <Link to={"/details/" + props.id}>
-        <button className={classes.button}>More Details</button>
-      </Link>
-    </div>
+    <Link to={"/details/" + props.id}>
+      <button className={classes.button}>More Details</button>
+    </Link>
   );
 }
 
