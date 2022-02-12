@@ -5,16 +5,20 @@ import Userdetails from "../components/Userdetails";
 function UserdetailsPage() {
   const { id } = useParams();
 
-  const [isLoading, setIsLoading] = useState(true);
   const [loadedUser, setLoadedUser] = useState();
   const [loadedAddress, setLoadedAddress] = useState();
 
   const url = "https://jsonplaceholder.typicode.com/users/" + id;
 
   useEffect(() => {
-    setIsLoading(true);
     fetch(url)
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Issue communicating with User API");
+        }
+      })
       .then((data) => {
         const user = {
           ...data,
@@ -24,22 +28,20 @@ function UserdetailsPage() {
         };
         setLoadedUser(user);
         setLoadedAddress(address);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    setIsLoading(false);
   }, []);
 
-  if (isLoading) {
-    return (
-      <section>
-        <p>Loading... </p>
-      </section>
-    );
-  }
-
-  return (
+  return loadedUser && loadedAddress ? (
     <div>
       <Userdetails {...loadedUser} {...loadedAddress} />
     </div>
+  ) : (
+    <section>
+      <p>Loading... </p>
+    </section>
   );
 }
 
