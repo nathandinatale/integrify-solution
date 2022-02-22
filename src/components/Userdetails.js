@@ -2,6 +2,8 @@ import Card from "../ui/Card";
 import classes from "./Userdetails.module.css";
 
 function UserDetails(props) {
+  // Could maybe do some spread operation here ?
+  // props contains each value independent, no more address distinction
   return (
     <Card>
       <ul className={classes.details}>

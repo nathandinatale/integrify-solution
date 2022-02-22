@@ -3,6 +3,7 @@ import Button from "./Button";
 import classes from "./User.module.css";
 import { getRandomColor, createImageFromInitials } from "./Utils";
 
+// Receives from UserList each attribute from props and returns a list item displaying all the information
 function User(props) {
   return (
     <li className={classes.item}>

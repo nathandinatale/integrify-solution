@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Userdetails from "../components/Userdetails";
 
 // The url from which the API is called uses the current URL's id paramater
+// from App.js, id was specified to be a variable appendage to the react app URL
 function UserdetailsPage() {
   const { id } = useParams();
 
@@ -12,6 +13,8 @@ function UserdetailsPage() {
   const url = "https://jsonplaceholder.typicode.com/users/" + id;
 
   // Throws an error into the console if user can't be found
+  // Could also do this by catching the failure to resolve the promise
+
   useEffect(() => {
     fetch(url)
       .then((response) => {
@@ -38,6 +41,7 @@ function UserdetailsPage() {
   }, []);
 
   // The user details page is only rendered once the user and their address have been received
+  // the loadedUser and loadedAddress key/value pairs are passed as props to userdetails component
   return loadedUser && loadedAddress ? (
     <div>
       <Userdetails {...loadedUser} {...loadedAddress} />
